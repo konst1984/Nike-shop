@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import LinkShop from '@/app/ui/LinkShop';
 
 const HeroBanner = () => {
     return (
@@ -16,30 +17,18 @@ const HeroBanner = () => {
                     />
                     <figcaption>
                         <div className="flex-c-c mt-12 flex-col">
-                            <p className="text-center font-semibold">
-                                Nike x Meg Thee Stallion
-                            </p>
-                            <h3 className="text-clamp-hero-title lin text-center font-bold leading-none">
-                                HOT GIRL SYSTEMS
+                            <h3 className="lin text-center text-clamp-hero-title font-bold uppercase leading-none">
+                                Jordan
                                 <br />
-                                IS HERE
+                                everyday <br className="md:hidden" />
+                                staples
                             </h3>
                             <p className="my-8 text-center">
-                                Meg’s first-ever Nike collection is here—Hot
-                                Girl Systems is bringing
-                                <br />
-                                shorts, bras, onesies, and more to the Hotties.
+                                Style and legacy come together in the latest
+                                collection.
                             </p>
                             <div>
-                                <a
-                                    href="https://www.nike.com/w/megan-thee-stallions-looks-14tw8"
-                                    target="_self"
-                                    tabIndex={0}
-                                    aria-label="Shop"
-                                    className="flex justify-center rounded-3xl bg-black px-5 py-2.5 font-helvetica font-bold text-white hover:px-7 duration-200 hover:invert-[0.2]"
-                                >
-                                    Shop
-                                </a>
+                                <LinkShop path="/w/jordan" />
                             </div>
                         </div>
                     </figcaption>

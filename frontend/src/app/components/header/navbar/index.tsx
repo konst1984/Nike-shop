@@ -1,10 +1,30 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 import NikeLogo from '@/assets/NikeLogo';
-import Search from '../search';
-import ProductNav from '../product-nav';
+import SearchForm from '../search-form';
 import { PiBagSimpleLight, PiHeartStraight } from 'react-icons/pi';
+import List from '../../list';
+import SubNav from '../sub-nav';
+import SearchIcon from '@/assets/SearchIcon';
+
+const NAV_LINKS = [
+    { id: 1, title: 'home', path: './' },
+    { id: 2, title: 'about', path: './about' },
+    {
+        id: 3,
+        title: 'categories',
+        subMenu: true,
+    },
+    { id: 4, title: 'contacts', path: './contacts' },
+];
+
+const SUB_NAV_LINKS = [
+    { id: 1, title: 'jordan', doc_count: 11 },
+    { id: 2, title: 'Sneakers', doc_count: 8 },
+    { id: 3, title: 'running shoes', doc_count: 64 },
+    { id: 4, title: 'football shoes', doc_count: 107 },
+];
 
 // const NAV_LINKS = [
 //     'New & Featured',
@@ -15,11 +35,22 @@ import { PiBagSimpleLight, PiHeartStraight } from 'react-icons/pi';
 //     'Sale',
 // ];
 
-const NavBar = () => {
+interface INavBar {
+    searchValue: string;
+    searchBarOpen: boolean;
+    setSearchValue: (value: string) => void;
+    setSearchBarOpen: (value: boolean) => void;
+}
 
+const NavBar: FC<INavBar> = ({
+    searchValue,
+    setSearchValue,
+    searchBarOpen,
+    setSearchBarOpen,
+}) => {
     return (
-        <div className="h-16 w-full bg-white">
-            <div className="container">
+        <div className="md960:block relative hidden h-16 w-full bg-white">
+            <div className="container h-fit">
                 <nav className="flex h-full items-center justify-between">
                     <Link
                         href={'/'}
@@ -27,26 +58,49 @@ const NavBar = () => {
                     >
                         <NikeLogo />
                     </Link>
-                    <ProductNav />
-                    <div className="flex h-full items-center justify-end gap-3">
-                        <Search />
-                        <Link
-                            href={''}
-                            className="h-9 w-9 rounded-full p-1.5 hover:bg-gray-300"
-                            title="Favorites"
+                    <div className="flex h-full w-full justify-end gap-10">
+                        <List
+                            className={`h-full items-center justify-center ${searchBarOpen ? 'hidden' : 'flex'}`}
+                            data={NAV_LINKS}
+                            renderData={(link) => (
+                                <li key={link.id} className="group h-full">
+                                    <Link
+                                        href={link.path ?? '#'}
+                                        className="flex h-full items-center border-b-2 border-transparent px-3 font-helvetica font-semibold capitalize hover:border-b-2 hover:border-black"
+                                    >
+                                        {link.title}
+                                    </Link>
+                                    <SubNav title={link.title} />
+                                </li>
+                            )}
+                        />
+                        <div
+                            className={`${searchBarOpen ? 'w-full' : 'w-auto'} flex h-full items-center justify-end gap-3 transition-all duration-200`}
                         >
-                            <PiHeartStraight className="h-full w-full" />
-                        </Link>
-                        <Link
-                            href={''}
-                            className="relative h-9 w-9 rounded-full p-1.5 hover:bg-gray-300"
-                            title="Bag items:0"
-                        >
-                            <PiBagSimpleLight className="h-full w-full" />
-                            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[42%] text-[9px] text-black ">
-                                1
-                            </span>
-                        </Link>
+                            <SearchForm
+                                value={searchValue}
+                                setSearchValue={setSearchValue}
+                                searchBarOpen={searchBarOpen}
+                                setSearchBarOpen={setSearchBarOpen}
+                            />
+                            <Link
+                                href={''}
+                                className={`${searchBarOpen ? 'hidden' : 'block'} h-9 w-9 rounded-full p-1.5 hover:bg-gray-300`}
+                                title="Favorites"
+                            >
+                                <PiHeartStraight className="h-full w-full" />
+                            </Link>
+                            <Link
+                                href={''}
+                                className={`${searchBarOpen ? 'hidden' : 'block'} relative h-9 w-9 rounded-full p-1.5 hover:bg-gray-300`}
+                                title="Bag items:0"
+                            >
+                                <PiBagSimpleLight className="h-full w-full" />
+                                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[42%] text-[9px] text-black ">
+                                    1
+                                </span>
+                            </Link>
+                        </div>
                     </div>
                 </nav>
             </div>
