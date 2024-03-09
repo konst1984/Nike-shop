@@ -14,7 +14,7 @@ import Accordion from '@/app/ui/Accordion';
 
 function Footer() {
     return (
-        <footer className="bg-black pb-3 pt-14 text-white">
+        <footer className="bg-black py-2 pb-3 pt-5 text-white md:py-5 md:pt-10">
             <div className="container">
                 <div className="mx-auto flex w-full flex-col justify-between gap-10 md:flex-row">
                     <div className="mx-auto flex w-full flex-col flex-wrap justify-between gap-4 md:flex-row">
@@ -87,7 +87,7 @@ function Footer() {
                         <Accordion data={RIGHT_LINKS} />
                     </div>
 
-                    <div className="flex gap-4 md:justify-start">
+                    <div className="my-4 flex gap-4 md:justify-start">
                         <a
                             href="https://twitter.com"
                             className="flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/[0.25] text-black hover:bg-white/[0.5]"
@@ -116,7 +116,7 @@ function Footer() {
                 </div>
 
                 <List
-                    className="flex flex-wrap justify-end gap-2 text-center md:gap-5 md:text-left"
+                    className="flex flex-col flex-wrap items-start justify-end gap-2 py-2 text-center md:flex-row md:gap-5 md:p-0 md:text-left"
                     renderData={(link) => (
                         <li key={link.title}>
                             <Link
