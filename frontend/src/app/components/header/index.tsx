@@ -4,11 +4,15 @@ import PreNavBar from './pre-main-header';
 import NavBar from './navbar';
 import MobileNavBar from '../mobile-navbar';
 import MobileMenu from '../mobile-menu';
+import { createPortal } from 'react-dom';
+import Overlay from '../overlay';
 
 const Header = () => {
     const [translate, setTranslate] = useState('translate-y-0');
     const [lastScrollY, setLastScrollY] = useState(0);
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const [searchBarOpen, setSearchBarOpen] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
         if (showMobileMenu) {
@@ -31,20 +35,32 @@ const Header = () => {
     }, [lastScrollY, showMobileMenu]);
 
     return (
-        <header
-            className={`sticky -top-8 w-full ${translate} z-[1000] duration-300`}
-        >
-            <PreNavBar />
-            <NavBar />
-            <MobileNavBar
-                showMenu={showMobileMenu}
-                setShowMenu={setShowMobileMenu}
-            />
-            <MobileMenu
-                showMenu={showMobileMenu}
-                setShowMenu={setShowMobileMenu}
-            />
-        </header>
+        <>
+            <header
+                className={`md960:${searchBarOpen ? '-top-16' : '-top-8'} sticky top-0 w-full ${translate} z-[1100] duration-300`}
+            >
+                <PreNavBar searchBarOpen={searchBarOpen} />
+                <NavBar
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                    searchBarOpen={searchBarOpen}
+                    setSearchBarOpen={setSearchBarOpen}
+                />
+                <MobileNavBar
+                    showMenu={showMobileMenu}
+                    setShowMenu={setShowMobileMenu}
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                    searchBarOpen={searchBarOpen}
+                    setSearchBarOpen={setSearchBarOpen}
+                />
+                <MobileMenu
+                    showMenu={showMobileMenu}
+                    setShowMenu={setShowMobileMenu}
+                />
+                <Overlay trigger={searchBarOpen} />
+            </header>
+        </>
     );
 };
 

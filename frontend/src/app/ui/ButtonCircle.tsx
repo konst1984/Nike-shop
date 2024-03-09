@@ -13,7 +13,7 @@ const ButtonCircle: FC<ButtonCircleProps> = ({
     return (
         <button
             {...props}
-            className={`flex-c-c rounded-full p-1 hover:bg-gray-300 ${className}`}
+            className={`rounded-full p-1 hover:bg-gray-300 focus-visible:bg-gray-300 ${className}`}
         >
             {children}
         </button>

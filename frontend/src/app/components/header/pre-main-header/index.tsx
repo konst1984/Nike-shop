@@ -1,7 +1,7 @@
 import ConversIcon from '@/assets/ConversIcon';
 import JordanIcon from '@/assets/JordanIcon';
 import Link from 'next/link';
-import React from 'react';
+import React, { FC } from 'react';
 import List from '../../list';
 import { title } from 'process';
 
@@ -11,9 +11,16 @@ const Links = [
     { title: 'join us', path: '#' },
     { title: 'sign in', path: '#' },
 ];
-const PreNavBar = () => {
+
+interface IPreNavBar {
+    searchBarOpen: boolean;
+}
+
+const PreNavBar: FC<IPreNavBar> = ({ searchBarOpen }) => {
     return (
-        <div className="bg-gray-100 py-[5px]">
+        <div
+            className={`${searchBarOpen ? 'hidden' : 'md960:block hidden'} bg-gray-100 py-[5px]`}
+        >
             <div className="container flex h-9 items-center justify-between">
                 <ul className="flex-c-c h-full">
                     <li>

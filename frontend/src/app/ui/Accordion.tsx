@@ -18,7 +18,7 @@ const Accordion: FC<AccordionProps> = ({ data }) => {
                 key={data[0].title}
                 onClick={() => setShow(!show)}
             >
-                <p className="cursor-pointer font-oswald text-sm font-medium uppercase">
+                <p className="cursor-pointer py-4 font-oswald text-sm font-medium uppercase">
                     {data[0].title}
                 </p>
                 <span>
@@ -27,10 +27,10 @@ const Accordion: FC<AccordionProps> = ({ data }) => {
             </div>
 
             <div
-                className={`${show ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} grid overflow-hidden transition-all duration-300`}
+                className={`${show ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} grid overflow-hidden py-2 transition-all duration-300`}
             >
                 <List
-                    className="grid-gap-2 grid min-h-0"
+                    className="grid min-h-0 gap-2"
                     renderData={(link, index) => {
                         if (index! > 0) {
                             return (

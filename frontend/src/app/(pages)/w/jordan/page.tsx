@@ -14,7 +14,6 @@ const Page = () => {
     <div>
       <SalesSlideLine data={SALE_INFO_DATA}/>
       <h1>Jordan</h1>
-      <ProductsList/>
     </div>
   );
 };
