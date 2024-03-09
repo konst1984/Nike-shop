@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 import { MdArrowForwardIos } from 'react-icons/md';
 import ButtonCircle from '@/app/ui/ButtonCircle';
-import Figure from '../figure';
+import Figure from '../figure-img';
 
 interface ICarousel {
     title: string;

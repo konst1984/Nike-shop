@@ -1,4 +1,4 @@
-import Figure from '@/app/components/figure';
+import Figure from '@/app/components/figure-img';
 import React from 'react';
 
 const FeaturedSection = () => {
