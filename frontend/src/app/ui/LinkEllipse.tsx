@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
-interface ILinkShop extends React.HTMLAttributes<HTMLAnchorElement> {
+interface ILinkEllipse extends React.HTMLAttributes<HTMLAnchorElement> {
     path: string;
     className?: string;
     title?: string;
 }
-const LinkShop: FC<ILinkShop> = ({
+const LinkEllipse: FC<ILinkEllipse> = ({
     path,
     className = 'bg-black text-white',
     title = 'shop',
@@ -17,7 +17,7 @@ const LinkShop: FC<ILinkShop> = ({
             target="_self"
             tabIndex={0}
             aria-label="Shop"
-            className={`flex w-fit justify-center rounded-3xl px-5 py-2.5 font-helvetica font-bold capitalize duration-200 hover:bg-zinc-400 focus-visible:bg-zinc-400 ${className}`}
+            className={`flex w-fit justify-center rounded-3xl px-5 py-2.5 font-bold capitalize duration-200 hover:bg-zinc-400 focus-visible:bg-zinc-400 ${className}`}
             {...rest}
         >
             {title}
@@ -25,4 +25,4 @@ const LinkShop: FC<ILinkShop> = ({
     );
 };
 
-export default LinkShop;
+export default LinkEllipse;

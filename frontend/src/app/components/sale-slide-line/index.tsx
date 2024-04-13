@@ -14,7 +14,7 @@ interface ISaleInfoLine {
 
 const SalesSlideLine: FC<ISaleInfoLine> = ({ data }) => {
     return (
-        <div className="text-md relative mx-auto min-h-[58px] w-full bg-gray-100 pt-[10px] font-helvetica font-semibold">
+        <div className="text-md relative mx-auto min-h-[58px] w-full bg-gray-100 pt-[10px] font-semibold">
             {' '}
             <Swiper autoplay={true} modules={[Autoplay]}>
                 {data.map((item) => (

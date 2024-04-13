@@ -1,7 +1,7 @@
 import React, { FC, FormEventHandler } from 'react';
 import SearchIcon from '@/assets/SearchIcon';
 import { VscChromeClose } from 'react-icons/vsc';
-import ButtonCircle from '@/app/ui/ButtonCircle';
+import ButtonCircle from '@/app/ui/Buttons/ButtonCircle';
 
 interface ISearchForm extends React.InputHTMLAttributes<HTMLInputElement> {
     value: string;
@@ -71,7 +71,7 @@ const SearchForm: FC<ISearchForm> = ({
             </form>
             <button
                 title="Close search bar"
-                className={` ${searchBarOpen ? 'block' : 'hidden'} text-md ml-auto rounded-2xl border border-transparent px-3 py-1 font-helvetica font-semibold hover:border-black focus-visible:border-black`}
+                className={` ${searchBarOpen ? 'block' : 'hidden'} text-md ml-auto rounded-2xl border border-transparent px-3 py-1 font-semibold hover:border-black focus-visible:border-black`}
                 onClick={handleClose}
             >
                 Cancel

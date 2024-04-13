@@ -49,7 +49,7 @@ const NavBar: FC<INavBar> = ({
     setSearchBarOpen,
 }) => {
     return (
-        <div className="md960:block relative hidden h-16 w-full bg-white">
+        <div className="m960:block relative hidden h-16 w-full bg-white">
             <div className="container h-fit">
                 <nav className="flex h-full items-center justify-between">
                     <Link
@@ -58,49 +58,47 @@ const NavBar: FC<INavBar> = ({
                     >
                         <NikeLogo />
                     </Link>
-                    <div className="flex h-full w-full justify-end gap-10">
-                        <List
-                            className={`h-full items-center justify-center ${searchBarOpen ? 'hidden' : 'flex'}`}
-                            data={NAV_LINKS}
-                            renderData={(link) => (
-                                <li key={link.id} className="group h-full">
-                                    <Link
-                                        href={link.path ?? '#'}
-                                        className="flex h-full items-center border-b-2 border-transparent px-3 font-helvetica font-semibold capitalize hover:border-b-2 hover:border-black"
-                                    >
-                                        {link.title}
-                                    </Link>
-                                    <SubNav title={link.title} />
-                                </li>
-                            )}
+                    <List
+                        className={`h-full items-center justify-center ${searchBarOpen ? 'hidden' : 'flex'}`}
+                        data={NAV_LINKS}
+                        renderData={(link) => (
+                            <li key={link.id} className="group h-full">
+                                <Link
+                                    href={link.path ?? '#'}
+                                    className="flex h-full items-center border-b-2 border-transparent px-3 font-semibold capitalize hover:border-b-2 hover:border-black"
+                                >
+                                    {link.title}
+                                </Link>
+                                <SubNav title={link.title} />
+                            </li>
+                        )}
+                    />
+                    <div
+                        className={`${searchBarOpen ? 'w-full' : 'w-auto'} flex h-full items-center justify-end gap-3 transition-all duration-200`}
+                    >
+                        <SearchForm
+                            value={searchValue}
+                            setSearchValue={setSearchValue}
+                            searchBarOpen={searchBarOpen}
+                            setSearchBarOpen={setSearchBarOpen}
                         />
-                        <div
-                            className={`${searchBarOpen ? 'w-full' : 'w-auto'} flex h-full items-center justify-end gap-3 transition-all duration-200`}
+                        <Link
+                            href="/favorites"
+                            className={`${searchBarOpen ? 'hidden' : 'block'} h-9 w-9 rounded-full p-1.5 hover:bg-gray-300`}
+                            title="Favorites"
                         >
-                            <SearchForm
-                                value={searchValue}
-                                setSearchValue={setSearchValue}
-                                searchBarOpen={searchBarOpen}
-                                setSearchBarOpen={setSearchBarOpen}
-                            />
-                            <Link
-                                href={''}
-                                className={`${searchBarOpen ? 'hidden' : 'block'} h-9 w-9 rounded-full p-1.5 hover:bg-gray-300`}
-                                title="Favorites"
-                            >
-                                <PiHeartStraight className="h-full w-full" />
-                            </Link>
-                            <Link
-                                href={''}
-                                className={`${searchBarOpen ? 'hidden' : 'block'} relative h-9 w-9 rounded-full p-1.5 hover:bg-gray-300`}
-                                title="Bag items:0"
-                            >
-                                <PiBagSimpleLight className="h-full w-full" />
-                                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[42%] text-[9px] text-black ">
-                                    1
-                                </span>
-                            </Link>
-                        </div>
+                            <PiHeartStraight className="h-full w-full" />
+                        </Link>
+                        <Link
+                            href="/cart"
+                            className={`${searchBarOpen ? 'hidden' : 'block'} relative h-9 w-9 rounded-full p-1.5 hover:bg-gray-300`}
+                            title="Bag items:0"
+                        >
+                            <PiBagSimpleLight className="h-full w-full" />
+                            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[42%] text-[9px] text-black ">
+                                1
+                            </span>
+                        </Link>
                     </div>
                 </nav>
             </div>

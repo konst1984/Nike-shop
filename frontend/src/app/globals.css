@@ -19,7 +19,8 @@
 body {
     /* font-family: 'Inter', sans-serif; */
     color: rgb(var(--foreground-rgb));
-    background-color: rgb(var(--background-start-rgb));
+    /* background-color: rgb(var(--background-start-rgb)); */
+    font-family: 'Helvetica', sans-serif;
 }
 
 @layer utilities {
@@ -35,6 +36,7 @@ body {
 .container {
     @apply mx-auto h-full max-w-[1920px] px-9;
 }
+
 @media (max-width: 960px) {
     .container {
         @apply mx-auto h-full max-w-[1920px] px-4;
@@ -47,4 +49,8 @@ body {
         -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
     }
+}
+
+.select-number::-webkit-inner-spin-button {
+    padding-left: 4px;
 }
