@@ -19,7 +19,7 @@ interface IPreNavBar {
 const PreNavBar: FC<IPreNavBar> = ({ searchBarOpen }) => {
     return (
         <div
-            className={`${searchBarOpen ? 'hidden' : 'md960:block hidden'} bg-gray-100 py-[5px]`}
+            className={`${searchBarOpen ? 'hidden' : 'm960:block hidden'} bg-gray-100 py-[5px]`}
         >
             <div className="container flex h-9 items-center justify-between">
                 <ul className="flex-c-c h-full">
@@ -48,7 +48,7 @@ const PreNavBar: FC<IPreNavBar> = ({ searchBarOpen }) => {
                             {index ? <span>|</span> : null}
                             <Link
                                 href={link.path}
-                                className="mx-2 cursor-pointer px-1 font-helvetica font-semibold capitalize hover:text-gray-500"
+                                className="mx-2 cursor-pointer px-1 font-semibold capitalize hover:text-gray-500"
                             >
                                 {link.title}
                             </Link>

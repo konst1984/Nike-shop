@@ -1,16 +1,19 @@
 'use client';
-import React, { FC, useRef } from 'react';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import React, { FC } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Scrollbar, Navigation, A11y } from 'swiper/modules';
-import { Swiper as SwiperType } from 'swiper';
-import Image from 'next/image';
 
 import { MdArrowForwardIos } from 'react-icons/md';
-import ButtonCircle from '@/app/ui/ButtonCircle';
+import ButtonCircle from '@/app/ui/Buttons/ButtonCircle';
 import Figure from '../figure-img';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/keyboard';
+
 interface ICarousel {
-    title: string;
+    title?: string;
     slides: { title: string; imagePath: string }[];
     id: string;
     paddingBottom?: string;
@@ -21,23 +24,19 @@ const Carousel: FC<ICarousel> = ({
     title,
     slides,
     id,
-    paddingBottom = '80px',
+    paddingBottom = '40px',
     slideStyle = {
-        aspectRatio: '1/1',
         maxWidth: '600px',
         width: 'auto',
         marginRight: '15px',
     },
     classFigure,
 }) => {
-    const slider = useRef<SwiperType>();
-
-    // console.log(slider.current);
     return (
         <section className="relative mt-12">
-            <div className="mb-3 flex items-center justify-between px-8 lg:px-12">
-                <h2 className="text-2xl capitalize">{title}</h2>
-                <div className="flex gap-2">
+            <div className="mb-3 flex items-center px-8 lg:px-12">
+                {title && <h2 className="text-2xl capitalize">{title}</h2>}
+                <div className="ml-auto flex gap-2">
                     <ButtonCircle
                         className={`swiper-btn-prev-${id} flex-c-c z-[100] h-12 w-12 rotate-180 bg-gray-200`}
                     >
@@ -78,11 +77,8 @@ const Carousel: FC<ICarousel> = ({
                     snapOnRelease: true,
                     dragClass: `swiper-scrollbar-drag-${id}`,
                 }}
-                onSwiper={(swiper) => {
-                    slider.current = swiper;
-                }}
                 modules={[Keyboard, Scrollbar, Navigation, A11y]}
-                style={{ padding: `0 24px ${paddingBottom}` }}
+                style={{ paddingBottom: `${paddingBottom}` }}
             >
                 {slides.map((slideContent, index) => (
                     <SwiperSlide
@@ -98,10 +94,19 @@ const Carousel: FC<ICarousel> = ({
                 ))}
             </Swiper>
             <div
-                className={`swiper-scrollbar swiper-scrollbar-${id} z-[1000]`}
-                style={{ height: '10px', maxWidth: '100%' }}
+                className={`swiper-scrollbar swiper-scrollbar-${id}`}
+                style={{
+                    height: '8px',
+                    maxWidth: '100%',
+                    backgroundColor: 'transparent',
+                }}
             >
                 <div
+                    style={{
+                        backgroundColor: '#555555',
+                        minHeight: '100%',
+                        borderRadius: '10px',
+                    }}
                     className={`swiper-scrollbar-drag swiper-scrollbar-drag-${id}`}
                 ></div>
             </div>

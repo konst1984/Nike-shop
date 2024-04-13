@@ -3,7 +3,7 @@ import React from 'react';
 
 const FeaturedSection = () => {
     return (
-        <section className="mx-6 mt-12">
+        <section className="mx-6">
             <h2 className="mb-6 px-8 text-2xl capitalize lg:px-12">Featured</h2>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                 <Figure

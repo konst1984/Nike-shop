@@ -1,4 +1,5 @@
-import ButtonCircle from '@/app/ui/ButtonCircle';
+'use client';
+import ButtonCircle from '@/app/ui/Buttons/ButtonCircle';
 import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
 import { IoCloseOutline } from 'react-icons/io5';

@@ -9,13 +9,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'black-700':'#111111'
+      },
       fontSize: {
         "clamp-hero-title": "clamp(3rem, 5vw, 4.75rem)",
       },
       fontFamily: {
         inter: ['var(--font-inter)'],
         oswald: ['var(--font-oswald)'],
-        helvetica: 'Helvetica Neue, sans-serif',
       },
       backgroundImage: {
         "grey-light": "var(--foreground-rgb)",
@@ -24,7 +26,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
        screens: {
-      'md960': '960px',
+      'm960': '960px',
       ...defaultTheme.screens,
     },
     },

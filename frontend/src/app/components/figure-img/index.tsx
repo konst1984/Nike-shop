@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
-import LinkShop from '@/app/ui/LinkShop';
+import LinkEllipse from '@/app/ui/LinkEllipse';
 import { CURRENT } from '@/app/constants';
 import { ISliderFigure } from '@/app/(pages)/home/components/main/data';
 
@@ -9,10 +9,7 @@ interface IFigure {
     className?: string;
     relative?: boolean;
 }
-const Figure: FC<IFigure> = ({
-    slideContent,
-    className = 'max-h-[600px] aspect-square',
-}) => {
+const Figure: FC<IFigure> = ({ slideContent, className = '' }) => {
     return (
         <figure
             className={`${slideContent.relative && 'relative'} h-full w-full ${className}`}
@@ -29,8 +26,8 @@ const Figure: FC<IFigure> = ({
                     height={300}
                     alt=""
                     src={slideContent.imagePath}
-                    className="h-full w-full object-cover"
-                    sizes="(max-width: 360px) 100vw,(max-width: 959px) 75vw,75vw"
+                    className="aspect-square h-full w-full object-cover"
+                    sizes="(max-width: 360px) 30vw,(max-width: 959px) 50vw,75vw"
                 />
             </picture>
             <figcaption
@@ -55,7 +52,7 @@ const Figure: FC<IFigure> = ({
                 )}
                 {slideContent.relative && (
                     <div>
-                        <LinkShop
+                        <LinkEllipse
                             path="/w/jordan"
                             className="bg-white text-black"
                             title={slideContent.titleButton || 'Shop'}

@@ -1,5 +1,5 @@
 'use client';
-import ButtonCircle from '@/app/ui/ButtonCircle';
+import ButtonCircle from '@/app/ui/Buttons/ButtonCircle';
 import SearchIcon from '@/assets/SearchIcon';
 import React, { FC, useState } from 'react';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ const MobileNavBar: FC<MobileNavBarProps> = ({
 }) => {
     return (
         <>
-            <div className="md960:hidden relative block h-16 w-full bg-white">
+            <div className="m960:hidden relative block h-16 w-full bg-white">
                 <div className="container flex h-fit w-full justify-between bg-white">
                     <Link
                         href={'/'}

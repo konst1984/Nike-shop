@@ -4,7 +4,7 @@ import React from 'react';
 const ProductCard = () => {
     return (
         <Link
-            href={`/product/1`}
+            href={`/1`}
             className="transform cursor-pointer overflow-hidden bg-white"
         >
             <div className="overflow-hidden">
@@ -16,36 +16,20 @@ const ProductCard = () => {
                     className="aspect-square h-auto w-full duration-200 hover:scale-105 "
                 />
             </div>
-            <div className="product-card__info disable-animations for--product">
-                <div
-                    data-testid="product-card__messaging"
-                    className="product-card__messaging accent--color"
-                >
-                    Just In
-                </div>
-                <div
-                    className="product-card__title"
-                    id='Air Jordan 1 High OG "Black &amp; White"'
-                    role="link"
-                >
-                    Air Jordan 1 High OG "Black &amp; White"
-                </div>
-                <div className="product-card__subtitle" role="link">
+            <div className="grid gap-1">
+                <p>Just In</p>
+                <p id='Air Jordan 1 High OG "Black &amp; White"' role="link">
+                    Air Jordan 1 High OG &quot;Black &amp; White&quot;
+                </p>
+                <p role="link" className="text-gray-500">
                     Big Kids&apos Shoes
-                </div>
-                <div
-                    aria-label="Available in 1 Color"
-                    className="product-card__product-count"
-                >
+                </p>
+                <p aria-label="Available in 1 Color" className="text-gray-500">
                     1 Color
-                </div>
-                <div
-                    className="product-price us__styling is--current-price css-11s12ax"
-                    data-testid="product-price"
-                    role="link"
-                >
+                </p>
+                <p data-testid="product-price" role="link">
                     $140
-                </div>
+                </p>
             </div>
             {/*<div className="p-4 text-black/[0.9]">*/}
             {/*  <h2 className="text-lg font-medium">{p.name}</h2>*/}

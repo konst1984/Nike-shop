@@ -30,7 +30,7 @@ const SubNav: FC<ISubNav> = ({ title }) => {
                     <li className="h-full" key={link.id}>
                         <Link
                             href={link?.path ?? '#'}
-                            className="flex h-full items-center px-3 font-helvetica font-semibold capitalize"
+                            className="flex h-full items-center px-3 font-semibold capitalize"
                         >
                             {link.title}
                         </Link>
