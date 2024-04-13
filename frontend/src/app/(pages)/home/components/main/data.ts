@@ -1,4 +1,4 @@
-import { LinksDataType } from "@/app/components/footer/links-data";
+import { LinksDataType } from "@/app/components/footer/data";
 
 export interface ISliderFigure {
         title: string;

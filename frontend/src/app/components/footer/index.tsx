@@ -9,8 +9,8 @@ import {
     MIDDLE_LEFT_LINKS,
     MIDDLE_RIGHT_LINKS,
     RIGHT_LINKS,
-} from './links-data';
-import Accordion from '@/app/ui/Accordion';
+} from './data';
+import AccordionLinks from '@/app/components/accordion-links';
 
 function Footer() {
     return (
@@ -41,7 +41,7 @@ function Footer() {
                                     <Link
                                         href={link.path}
                                         target="_blank"
-                                        className={`${index === 0 ? 'font-oswald text-sm font-medium uppercase' : 'cursor-pointer font-helvetica text-xs  capitalize text-white/[0.5] hover:text-white'}`}
+                                        className={`${index === 0 ? 'font-oswald text-sm font-medium uppercase' : 'cursor-pointer text-xs  capitalize text-white/[0.5] hover:text-white'}`}
                                     >
                                         {link.title}
                                     </Link>
@@ -57,7 +57,7 @@ function Footer() {
                                     <Link
                                         href={link.path}
                                         target="_blank"
-                                        className={`${index === 0 ? 'font-oswald text-sm font-medium uppercase' : 'cursor-pointer font-helvetica text-xs capitalize text-white/[0.5] hover:text-white'}`}
+                                        className={`${index === 0 ? 'font-oswald text-sm font-medium uppercase' : 'cursor-pointer text-xs capitalize text-white/[0.5] hover:text-white'}`}
                                     >
                                         {link.title}
                                     </Link>
@@ -73,7 +73,7 @@ function Footer() {
                                     <Link
                                         href={link.path}
                                         target="_blank"
-                                        className={`${index === 0 ? 'font-oswald text-sm font-medium uppercase ' : 'cursor-pointer font-helvetica text-xs capitalize text-white/[0.5] hover:text-white'}`}
+                                        className={`${index === 0 ? 'font-oswald text-sm font-medium uppercase ' : 'cursor-pointer text-xs capitalize text-white/[0.5] hover:text-white'}`}
                                     >
                                         {link.title}
                                     </Link>
@@ -82,9 +82,9 @@ function Footer() {
                             data={RIGHT_LINKS}
                         />
 
-                        <Accordion data={MIDDLE_LEFT_LINKS} />
-                        <Accordion data={MIDDLE_RIGHT_LINKS} />
-                        <Accordion data={RIGHT_LINKS} />
+                        <AccordionLinks data={MIDDLE_LEFT_LINKS} />
+                        <AccordionLinks data={MIDDLE_RIGHT_LINKS} />
+                        <AccordionLinks data={RIGHT_LINKS} />
                     </div>
 
                     <div className="my-4 flex gap-4 md:justify-start">
@@ -131,7 +131,7 @@ function Footer() {
                     data={BOTTOM_LINKS}
                 />
 
-                <div className="mx-auto mt-10 flex w-full flex-col justify-between gap-[10px] pb-5 font-helvetica md:flex-row md:gap-0">
+                <div className="mx-auto mt-10 flex w-full flex-col justify-between gap-[10px] pb-5 md:flex-row md:gap-0">
                     <div className="cursor-pointer text-center text-xs text-white/[0.5] hover:text-white md:text-left">
                         © 2023 Nike, Inc. All Rights Reserved
                     </div>

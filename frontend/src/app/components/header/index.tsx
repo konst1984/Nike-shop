@@ -37,7 +37,7 @@ const Header = () => {
     return (
         <>
             <header
-                className={`md960:${searchBarOpen ? '-top-16' : '-top-8'} sticky top-0 w-full ${translate} z-[1100] duration-300`}
+                className={`m960:${searchBarOpen ? '-top-16' : '-top-8'} sticky top-0 w-full ${translate} z-[1100] duration-300`}
             >
                 <PreNavBar searchBarOpen={searchBarOpen} />
                 <NavBar

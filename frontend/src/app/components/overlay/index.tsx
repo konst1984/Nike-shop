@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -13,7 +14,7 @@ const Overlay: FC<IOverlay> = ({ trigger }) => {
                 <div
                     className={`overlay ${trigger ? 'block' : 'hidden'} fixed inset-0 z-[1000]`}
                 />,
-                document.body
+                document?.body
             )}
         </div>
     );
