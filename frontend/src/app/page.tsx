@@ -1,7 +1,17 @@
-import Image from 'next/image';
+import React from 'react';
+import HeroBanner from '@/app/components/hero-banner';
+import SalesSlideLine from '@/app/components/sale-slide-line';
+import { SALE_INFO_DATA } from './home-components/main/data';
+import Main from './home-components/main';
 
-export default function Home() {
+const Home = () => {
     return (
-        <main className="flex h-[300vh] grow flex-col items-center justify-between p-24"></main>
+        <>
+            <SalesSlideLine data={SALE_INFO_DATA} />
+            <HeroBanner />
+            <Main />
+        </>
     );
-}
+};
+
+export default Home;

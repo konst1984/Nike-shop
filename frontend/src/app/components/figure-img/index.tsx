@@ -2,14 +2,15 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import LinkEllipse from '@/app/ui/LinkEllipse';
 import { CURRENT } from '@/app/constants';
-import { ISliderFigure } from '@/app/(pages)/home/components/main/data';
+import { ISliderFigure } from '@/app/home-components/main/data';
 
 interface IFigure {
     slideContent: ISliderFigure;
     className?: string;
     relative?: boolean;
+    styleImage?: string;
 }
-const Figure: FC<IFigure> = ({ slideContent, className = '' }) => {
+const Figure: FC<IFigure> = ({ slideContent, styleImage, className = '' }) => {
     return (
         <figure
             className={`${slideContent.relative && 'relative'} h-full w-full ${className}`}
@@ -26,7 +27,7 @@ const Figure: FC<IFigure> = ({ slideContent, className = '' }) => {
                     height={300}
                     alt=""
                     src={slideContent.imagePath}
-                    className="aspect-square h-full w-full object-cover"
+                    className={`aspect-square h-full w-full object-cover ${styleImage}`}
                     sizes="(max-width: 360px) 30vw,(max-width: 959px) 50vw,75vw"
                 />
             </picture>

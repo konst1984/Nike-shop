@@ -1,18 +1,15 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import ProductCard from '@/app/components/product-card';
+import React, { FC } from 'react';
+import { IShoes } from '@/app/types/interfaces';
 
-const ProductsList = () => {
+interface IProductsList {
+    data: IShoes[];
+    renderData: (data: IShoes) => JSX.Element;
+}
+const ProductsList: FC<IProductsList> = ({ data, renderData }) => {
+    console.log(data);
     return (
         <div className="mb-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {data.map(renderData)}
         </div>
     );
 };

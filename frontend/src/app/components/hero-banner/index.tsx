@@ -17,7 +17,7 @@ const HeroBanner = () => {
                             width={1920}
                             height={400}
                             alt="Nike. Just Do It"
-                            className="w-full object-cover object-center px-5 pt-2 md:aspect-[16/5] md:px-0 md:pt-0"
+                            className="w-full object-cover object-center pt-2 md:aspect-[16/5] md:px-0 md:pt-0"
                             priority={true}
                         />
                     </picture>

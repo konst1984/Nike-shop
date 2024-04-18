@@ -3,6 +3,7 @@ import { Inter, Oswald } from 'next/font/google';
 import './globals.css';
 import Header from './components/header';
 import Footer from './components/footer';
+import RootProvider from './RootProvider';
 
 const inter = Inter({
     display: 'swap',
@@ -34,9 +35,11 @@ export default function RootLayout({
             className={`${oswald.className} ${inter.className} antialiased`}
         >
             <body className="flex min-h-screen flex-col">
-                <Header />
-                <main className="flex-grow">{children}</main>
-                <Footer />
+                <RootProvider>
+                    <Header />
+                    <main className="flex-grow">{children}</main>
+                    <Footer />
+                </RootProvider>
             </body>
         </html>
     );

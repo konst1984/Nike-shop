@@ -1,26 +1,31 @@
 import { StringifyOptions } from 'querystring';
 import React, { FC } from 'react';
 
-interface ICheckBox {
+interface ICheckBox extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string | number;
     display?: string;
     classInput?: string;
     color?: string;
+    dataKey?: string;
 }
 const CheckBox: FC<ICheckBox> = ({
     label,
     display = 'flex',
-    classInput = 'rounded h-5 w-5',
+    classInput = 'rounded h-5 w-5 border-gray-500',
     color = 'bg-white',
+    dataKey,
+    ...rest
 }) => {
     return (
         <div className={`${display} items-center`}>
             <label className="relative mr-1 flex w-fit cursor-pointer items-center justify-center rounded-full">
                 <input
                     type="checkbox"
-                    className={`peer relative m-auto cursor-pointer appearance-none ${classInput} border border-gray-500 bg-white transition-all checked:border-gray-900 checked:bg-gray-900`}
-                    id={String(label)}
+                    className={`peer relative m-auto cursor-pointer appearance-none ${classInput} border bg-white transition-all checked:border-gray-900 checked:bg-gray-900`}
+                    id={String(label).toLowerCase()}
+                    data-key={dataKey?.toLowerCase()}
                     style={{ backgroundColor: `${color}` }}
+                    {...rest}
                 />
                 <span
                     className={`pointer-events-none absolute left-2/4 top-2/4 flex h-full w-full -translate-x-2/4 -translate-y-2/4 items-center justify-center ${color === 'white' ? 'text-black' : 'text-white'} opacity-0 transition-opacity peer-checked:opacity-100`}
