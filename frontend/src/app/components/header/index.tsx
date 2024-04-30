@@ -15,9 +15,14 @@ const Header = () => {
     const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
+        window.scrollY = 0;
+    }, []);
+
+    useEffect(() => {
         if (showMobileMenu) {
             return;
         }
+
         const scrollHandler = () => {
             if (typeof window !== 'undefined') {
                 if (window.scrollY > 200) {
@@ -33,6 +38,8 @@ const Header = () => {
         window.addEventListener('scroll', scrollHandler);
         return () => window.removeEventListener('scroll', scrollHandler);
     }, [lastScrollY, showMobileMenu]);
+
+    console.log(lastScrollY, showMobileMenu);
 
     return (
         <>

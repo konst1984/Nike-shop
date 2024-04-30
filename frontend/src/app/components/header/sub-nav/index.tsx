@@ -24,7 +24,7 @@ const SubNav: FC<ISubNav> = ({ title }) => {
     if (!SUB_NAV[title]) return null;
 
     return (
-        <div className="absolute left-0 top-[80px] box-content hidden w-full bg-white px-10 pb-10 pt-4 group-hover:block">
+        <div className="absolute left-0 top-[64px] box-content hidden w-full bg-white px-10 pb-10 pt-4 group-hover:block">
             <ul className="mx-auto flex h-full max-w-[1920px] flex-col items-start justify-start px-9">
                 {SUB_NAV[title]?.map((link) => (
                     <li className="h-full" key={link.id}>

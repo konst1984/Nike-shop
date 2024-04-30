@@ -34,9 +34,13 @@ const Carousel: FC<ICarousel> = ({
 }) => {
     return (
         <section className="relative mt-12">
-            <div className="mb-3 flex items-center px-8 lg:px-12">
-                {title && <h2 className="text-2xl capitalize">{title}</h2>}
-                <div className="ml-auto flex gap-2">
+            <div className="mb-3 flex items-center px-0 lg:px-8">
+                {title && (
+                    <h4 className="text-4xl font-extrabold uppercase">
+                        {title}
+                    </h4>
+                )}
+                <div className="ml-auto hidden gap-2 lg:flex">
                     <ButtonCircle
                         className={`swiper-btn-prev-${id} flex-c-c z-[100] h-12 w-12 rotate-180 bg-gray-200`}
                     >
