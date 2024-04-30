@@ -12,7 +12,7 @@ const SALE_INFO_DATA: { title: string; text: string }[] = [
 ];
 
 const getShoes = async (slug: string) => {
-    const res = await fetch(`https://clothes-shop-ubov.onrender.com/${slug}/`, {
+    const res = await fetch(`http://localhost:5000/${slug}/`, {
         cache: 'no-store',
     });
     return res.json();

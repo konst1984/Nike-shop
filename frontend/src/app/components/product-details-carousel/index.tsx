@@ -60,7 +60,8 @@ const ProductDetailsCarousel: FC<IProductDetailsCarousel> = ({ data }) => {
                                 height={80}
                                 src={`/${src}`}
                                 alt=""
-                                className={`${activeIndex === idx && 'opacity-50'} block h-full w-full rounded-md object-cover`}
+                                priority={true}
+                                className={`${activeIndex === idx && 'opacity-50'} block h-auto w-auto rounded-md object-cover`}
                             />
                         </SwiperSlide>
                     ))}

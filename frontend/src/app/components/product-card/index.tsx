@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC } from 'react';
-import { IShoes } from '../../types/interfaces';
+import { IShoe } from '../../types/interfaces';
 
 interface IProductCard {
-    data: IShoes;
+    data: IShoe;
     model: string;
 }
 const ProductCard: FC<IProductCard> = ({ data, model }) => {

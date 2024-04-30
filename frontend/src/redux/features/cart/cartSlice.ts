@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../store'
-import { IShoesCart } from '@/app/types/interfaces'
+import { IShoeCart } from '@/app/types/interfaces'
 
-// Define a type for the slice state
+const isTrue= <T extends {id: string, selectedSize: number, color: string}>(item: T, action: PayloadAction<T>):boolean => item.id === action.payload.id && item.selectedSize === action.payload.selectedSize && item.color === action.payload.color
+
 interface ICartSlice {
-  cartItems: IShoesCart[]
+  cartItems: IShoeCart[]
 }
 
-// Define the initial state using that type
 const initialState: ICartSlice = {
   cartItems: [],
 }
@@ -17,25 +17,35 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state,  action: PayloadAction<IShoesCart>) => {
-      const isExist = state.cartItems.some((item) => item.id === action.payload.id && item.size === action.payload.size)
-      const item = state.cartItems.find((item) => item.id === action.payload.id && item.size === action.payload.size)
+    addToCart: (state,  action: PayloadAction<IShoeCart>) => {
+      const isExist = state.cartItems.some((item) => isTrue<IShoeCart>(item, action))
+      const item = state.cartItems.find((item) => isTrue<IShoeCart>(item, action))
       if(isExist && item) {
         item.quantity +=1
-        // state.cartItems = state.cartItems.map((item) => item.id === action.payload.id && item.size === action.payload.size ? {...item, quantity: item.quantity + 1} : item)
+        item.totalPrice = item.quantity * item.price
       }
       else state.cartItems.push(action.payload)
     },
-    decrement: (state) => {
-      state.cartItems = []
+    removeFromCart: (state, action: PayloadAction<IShoeCart>) => {
+      state.cartItems = state.cartItems.filter((item) => !isTrue(item,action))
     },
-    incrementByAmount: (state, action: PayloadAction<any>) => {
-      state.cartItems = []
+    updateCartItem: (state, action: PayloadAction<IShoeCart>) => {
+
+      const isExist = state.cartItems.some((item) => isTrue(item,action))
+      let item = state.cartItems.find((item) => isTrue(item,action))
+      if(isExist && item) {
+        item = action.payload
+      }
     },
+    clearCart: (state) => {
+      state.cartItems = []
+    }
   },
 })
 
-export const { addToCart, decrement, incrementByAmount } = cartSlice.actions
+export const { addToCart, clearCart, updateCartItem,removeFromCart } = cartSlice.actions
+
+export const totalPriceCart = (state: RootState): number => state.cart.cartItems.reduce((total, item) => total + item.totalPrice, 0)
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.procy.value

@@ -2,12 +2,12 @@
 import React, { FC, useState } from 'react';
 import Accordion from '@/app/ui/Accordion/Accordion';
 import ProductDetailsCarousel from '@/app/components/product-details-carousel';
-import { IShoes } from '@/app/types/interfaces';
+import { IShoe } from '@/app/types/interfaces';
 import { useAppDispatch } from '@/redux/hook';
 import { addToCart } from '@/redux/features/cart/cartSlice';
 
 interface IContent {
-    data: IShoes;
+    data: IShoe;
 }
 
 const Content: FC<IContent> = ({ data }) => {
@@ -15,16 +15,27 @@ const Content: FC<IContent> = ({ data }) => {
     const [isValisSize, setIsValisSize] = useState<boolean>(true);
     const dispatch = useAppDispatch();
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
+        let timeout: ReturnType<typeof setTimeout> = setTimeout(() => {}, 0);
         if (size) {
-            const { images, sizes, ...restData } = data;
+            const { images, ...restData } = data;
             dispatch(
                 addToCart({
                     ...restData,
-                    size: size,
+                    selectedSize: size,
                     quantity: 1,
+                    totalPrice: restData.price,
                 })
             );
+            e.currentTarget.innerHTML = 'Added to cart';
+            if (!timeout) {
+                timeout = setTimeout(() => {
+                    e.currentTarget.innerHTML = 'Add to cart';
+                    clearTimeout(timeout);
+                }, 1000);
+            }
         } else {
             setIsValisSize(false);
         }
@@ -41,7 +52,7 @@ const Content: FC<IContent> = ({ data }) => {
                 <div className="block px-6 pb-3 m960:hidden">
                     <h1 className="text-3xl font-semibold">{data.title}</h1>
                     <p className="mb-4">{data.category}</p>
-                    <p>{data.price}</p>
+                    <p>${data.price}</p>
                 </div>
                 <ProductDetailsCarousel data={data.images} />
             </div>
@@ -97,7 +108,7 @@ const Content: FC<IContent> = ({ data }) => {
                         </p>
                         <div className="grid gap-2">
                             <button
-                                className="w-full rounded-[30px] border border-black bg-black py-4 text-center text-white"
+                                className="w-full rounded-[30px] border border-black bg-black py-4 text-center text-white active:bg-green-600"
                                 onClick={handleAddToCart}
                             >
                                 Add to bag

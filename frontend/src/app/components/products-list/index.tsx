@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { IShoes } from '@/app/types/interfaces';
+import { IShoe } from '@/app/types/interfaces';
 
 interface IProductsList {
-    data: IShoes[];
-    renderData: (data: IShoes) => JSX.Element;
+    data: IShoe[];
+    renderData: (data: IShoe) => JSX.Element;
 }
 const ProductsList: FC<IProductsList> = ({ data, renderData }) => {
     console.log(data);

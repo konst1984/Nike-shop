@@ -13,7 +13,7 @@ interface IProductDetails {
 }
 
 const getShoe = async (path: string) => {
-    const res = await fetch(`https://clothes-shop-ubov.onrender.com/${path}`, {
+    const res = await fetch(`http://localhost:5000/${path}`, {
         cache: 'no-store',
     });
     return res.json();
@@ -27,21 +27,12 @@ const ProductDetails: FC<IProductDetails> = async ({ params }) => {
             <div className="bg-white pb-[60px]">
                 <div className="m-auto w-full max-w-[1200px]">
                     <Content data={shoe} />
-
-                    {/* <div>
-                <p>How Others Are Wearing</p>
-                <p>
-                    It Upload your photo or mention @Nike on Instagram for a
-                    chance to be featured.
-                </p>
-                <button>Upload Your photo</button>
-            </div> */}
                     <div className="pl-4 m960:pl-12">
                         <Carousel
                             title="You Might Also Like"
                             id="populars"
                             slides={PopularImages}
-                            paddingBottom="120px"
+                            paddingBottom="40px"
                         />
                     </div>
                 </div>

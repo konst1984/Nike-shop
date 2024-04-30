@@ -3,18 +3,19 @@ interface ISizes {
 	enabled: boolean;
 };
 
-export interface IShoes {
+export interface IShoe {
 	id: string;
   category: string;
 	title: string;
 	thumbnail: string;
 	images: string[];
-	color: string[];
+	color: string;
 	gender: string;
 	hight: string;
 	price: number;
+	model: string;
 	sizes: ISizes[];
 };
 
-export type IShoesCart = Omit<IShoes, 'sizes' | 'images'> & { quantity: number, size: number };
+export type IShoeCart = Omit<IShoe, 'images'> & { quantity: number, selectedSize: number, totalPrice: number };
 

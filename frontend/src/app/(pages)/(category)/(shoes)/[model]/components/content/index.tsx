@@ -5,11 +5,11 @@ import FilterIcon from '@/app/icons/FilterIcon';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { FC } from 'react';
 import SortBy from '../../../../../../components/sort-by';
-import { IShoes } from '@/app/types/interfaces';
+import { IShoe } from '@/app/types/interfaces';
 import ProductCard from '@/app/components/product-card';
 
 interface IContent {
-    data: IShoes[];
+    data: IShoe;
     model: string;
 }
 
