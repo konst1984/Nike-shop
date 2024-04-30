@@ -1,4 +1,5 @@
-export type LinksDataType = { title: string; path: string; }[]
+export type LinksDataType = { title: string; path?: string; }[]
+
 
 export const LEFT_LINKS: LinksDataType = [
     {title:'resources',path: '#'},

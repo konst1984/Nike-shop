@@ -7,6 +7,7 @@ import { PiBagSimpleLight, PiHeartStraight } from 'react-icons/pi';
 import List from '../../list';
 import SubNav from '../sub-nav';
 import SearchIcon from '@/assets/SearchIcon';
+import { useAppSelector } from '@/redux/hook';
 
 const NAV_LINKS = [
     { id: 1, title: 'home', path: './' },
@@ -48,8 +49,9 @@ const NavBar: FC<INavBar> = ({
     searchBarOpen,
     setSearchBarOpen,
 }) => {
+    const cart = useAppSelector((state) => state.cart.cartItems);
     return (
-        <div className="m960:block relative hidden h-16 w-full bg-white">
+        <div className="relative hidden h-16 w-full bg-white m960:block">
             <div className="container h-fit">
                 <nav className="flex h-full items-center justify-between">
                     <Link
@@ -92,11 +94,11 @@ const NavBar: FC<INavBar> = ({
                         <Link
                             href="/cart"
                             className={`${searchBarOpen ? 'hidden' : 'block'} relative h-9 w-9 rounded-full p-1.5 hover:bg-gray-300`}
-                            title="Bag items:0"
+                            title={`Bag items:${cart.length}`}
                         >
                             <PiBagSimpleLight className="h-full w-full" />
                             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[42%] text-[9px] text-black ">
-                                1
+                                {cart.length > 9 ? '9+' : cart.length}
                             </span>
                         </Link>
                     </div>

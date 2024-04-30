@@ -1,17 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-const ProductCard = () => {
+import React, { FC } from 'react';
+import { IShoe } from '../../types/interfaces';
+
+interface IProductCard {
+    data: IShoe;
+    model: string;
+}
+const ProductCard: FC<IProductCard> = ({ data, model }) => {
     return (
         <Link
-            href={`/1`}
+            href={`/${model}/${data.id}`}
             className="transform cursor-pointer overflow-hidden bg-white"
         >
             <div className="overflow-hidden">
                 <Image
                     width={500}
                     height={500}
-                    src={'/product-1.webp'}
+                    src={`/${data.thumbnail}`}
                     alt={'Product'}
                     className="aspect-square h-auto w-full duration-200 hover:scale-105 "
                 />
@@ -19,16 +25,19 @@ const ProductCard = () => {
             <div className="grid gap-1">
                 <p>Just In</p>
                 <p id='Air Jordan 1 High OG "Black &amp; White"' role="link">
-                    Air Jordan 1 High OG &quot;Black &amp; White&quot;
+                    {data.title}
                 </p>
                 <p role="link" className="text-gray-500">
-                    Big Kids&apos Shoes
+                    {data.category}
                 </p>
-                <p aria-label="Available in 1 Color" className="text-gray-500">
+                <p
+                    aria-label="Available in 1 Color"
+                    className="capitalize text-gray-500"
+                >
                     1 Color
                 </p>
                 <p data-testid="product-price" role="link">
-                    $140
+                    {data.price}
                 </p>
             </div>
             {/*<div className="p-4 text-black/[0.9]">*/}
